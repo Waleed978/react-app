@@ -16,7 +16,7 @@ describe('App', () => {
     render(<App />)
 
     expect(
-      screen.getByRole('button', { name: 'Count is 0' }),
+      screen.getByRole('button', { name: 'Count is 1' }),
     ).toBeInTheDocument()
   })
 
