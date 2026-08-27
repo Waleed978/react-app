@@ -27,7 +27,7 @@ describe('App', () => {
     await user.click(screen.getByRole('button', { name: 'Count is 0' }))
 
     expect(
-      screen.getByRole('button', { name: 'Count is 2' }),
+      screen.getByRole('button', { name: 'Count is 1' }),
     ).toBeInTheDocument()
   })
 
