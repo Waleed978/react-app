@@ -13,7 +13,7 @@ jobs:
         run: npm ci
       - name: Run tests
         run: npm test
-  deployment:
+  build:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -21,19 +21,32 @@ jobs:
         uses: actions/checkout@v7
       - name: Install dependencies
         run: npm ci
+      - name: check lints
+        run: npm run lint
       - name: build
         run: npm run build
       - name: upload artifacts
         uses: actions/upload-artifact@v7
         with:
           name: dist-files
-          path: |
-            dist/
-            package.json
-      - name: check lints
-        run: npm run lint
+          path: dist/
+          # path: |
+          #   dist/
+          #   package.json
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get build artifacts
+        uses: actions/download-artifact@v7
+        with:
+          name: dist-files
+          path: dist/
       - name: Deploy
         run: echo "deploying"
+      - name: Deploy
+
+
 
 
 
