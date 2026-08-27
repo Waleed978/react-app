@@ -44,7 +44,6 @@ jobs:
           path: dist/
       - name: Deploy
         run: echo "deploying"
-      - name: Deploy
 
 
 
